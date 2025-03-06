@@ -22,7 +22,7 @@ function Header({ currentUser, setCurrentUser, setToken }) {
 
   return (
     <header class="drr-header-main">
-        <div className="logo">drriven</div>
+        <div className="logo">drriven.</div>
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>

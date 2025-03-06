@@ -1,3 +1,7 @@
+* {
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
 .drr-header-main {
 
     width: 100%;
@@ -14,7 +18,7 @@
 .drr-header-main .logo {
 
     color: #fff;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 24px;
 
 }

@@ -5,9 +5,16 @@ import Home from './components/Home';
 import DataPage from './components/DataPage';
 import Posts from './components/Posts';
 import Login from './components/Login';
-import Header from './components/Header';
 import Sidepanel from './components/Sidepanel';
 import PrivateRoute from './components/PrivateRoute';
+import Feed from './components/Feed';
+import Inbox from './components/Inbox';
+import News from './components/News';
+import Forum from './components/Forum';
+import Events from './components/Events';
+import Spotting from './components/Spotting';
+import Settings from './components/Settings';
+
 import './css/resetstyle.css';
 import './css/index.css';
 
@@ -37,7 +44,6 @@ function App() {
 
   return (
     <Router>
-      <Header currentUser={currentUser} />
       <Sidepanel currentUser={currentUser} setCurrentUser={setCurrentUser} setToken={setToken} />
       <div className="drr-main">
         <Routes>
@@ -52,6 +58,13 @@ function App() {
               </PrivateRoute>
             }
           />
+            <Route path="/feed" element={<Feed />} />
+            <Route path="/inbox" element={<Inbox />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/forum" element={<Forum />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/spotting" element={<Spotting />} />
+            <Route path="/settings" element={<Settings currentUser={currentUser} setCurrentUser={setCurrentUser} setToken={setToken} />} />
         </Routes>
       </div>
     </Router>

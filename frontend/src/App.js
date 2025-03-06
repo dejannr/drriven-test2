@@ -6,22 +6,22 @@ import DataPage from './components/DataPage';
 import Posts from './components/Posts';
 import Login from './components/Login';
 import Header from './components/Header';
+import Sidepanel from './components/Sidepanel';
 import PrivateRoute from './components/PrivateRoute';
-import './css/resetstyle.css'
-import './css/index.css'
+import './css/resetstyle.css';
+import './css/index.css';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('access_token'));
 
-  // Optionally, on app load, if token exists, fetch current user info
   useEffect(() => {
     if (token) {
       fetch('http://localhost:8000/api/current_user/', {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        }
+          'Authorization': `Bearer ${token}`,
+        },
       })
         .then(response => response.json())
         .then(data => {
@@ -37,20 +37,23 @@ function App() {
 
   return (
     <Router>
-      <Header currentUser={currentUser} setCurrentUser={setCurrentUser} setToken={setToken} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/data" element={<DataPage token={token} />} />
-        <Route path="/login" element={<Login setCurrentUser={setCurrentUser} setToken={setToken} />} />
-        <Route
-          path="/posts"
-          element={
-            <PrivateRoute token={token}>
-              <Posts token={token} />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
+      <Header currentUser={currentUser} />
+      <Sidepanel currentUser={currentUser} setCurrentUser={setCurrentUser} setToken={setToken} />
+      <div className="drr-main">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/data" element={<DataPage token={token} />} />
+          <Route path="/login" element={<Login setCurrentUser={setCurrentUser} setToken={setToken} />} />
+          <Route
+            path="/posts"
+            element={
+              <PrivateRoute token={token}>
+                <Posts token={token} />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </div>
     </Router>
   );
 }

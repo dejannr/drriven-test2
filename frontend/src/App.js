@@ -7,6 +7,8 @@ import Posts from './components/Posts';
 import Login from './components/Login';
 import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
+import './css/resetstyle.css'
+import './css/index.css'
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);

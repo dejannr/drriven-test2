@@ -1,0 +1,33 @@
+.drr-header-main {
+
+    width: 100%;
+    height: 60px;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 30px;
+
+}
+
+.drr-header-main .logo {
+
+    color: #fff;
+    font-weight: 600;
+    font-size: 24px;
+
+}
+
+.drr-header-main nav ul {
+
+    display: flex;
+    gap: 20px;
+
+}
+
+.drr-header-main a {
+
+    color: #fff;
+
+}

@@ -5,31 +5,38 @@ import { Link, useNavigate } from 'react-router-dom';
 function Header({ currentUser, setCurrentUser, setToken }) {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    // For JWT, "logout" is typically just removing the token from storage
+  const handleLogout = (e) => {
+    // Optionally prevent default behavior if needed
+    // e.preventDefault();
+
+    // Remove tokens and update state
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
     setToken(null);
     setCurrentUser(null);
-    navigate('/login');
+
+    // Navigate to login page (optional if Link already handles navigation)
+    // navigate('/login');
   };
 
+
   return (
-    <header style={{ marginBottom: '20px' }}>
+    <header class="drr-header-main">
+        <div className="logo">drriven</div>
       <nav>
-        <ul style={{ display: 'flex', listStyle: 'none', gap: '10px' }}>
+        <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/data">Data Page</Link></li>
           <li><Link to="/posts">Posts</Link></li>
         </ul>
       </nav>
-      <div style={{ marginTop: '10px' }}>
+      <div>
         {currentUser ? (
           <div>
             <span>Welcome, {currentUser.username}!</span>
-            <button onClick={handleLogout} style={{ marginLeft: '10px' }}>
+            <Link to="/login" onClick={handleLogout}>
               Logout
-            </button>
+            </Link>
           </div>
         ) : (
           <Link to="/login">Login</Link>

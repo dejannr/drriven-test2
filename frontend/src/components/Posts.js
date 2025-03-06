@@ -41,7 +41,7 @@ function Posts({ token }) {
     <div>
       <h1>Posts</h1>
       {posts.map(post => (
-        <div key={post.id} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
+        <div key={post.id}>
           <h2>{post.subject}</h2>
           <p>{post.description}</p>
           <p>Likes: {post.likes_count}</p>
